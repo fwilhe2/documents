@@ -33,7 +33,8 @@ cp -r skel/* $shortname
 cp skel/.* $shortname
 
 echo "replace placeholder with '$shortname'"
-sed -i "s/<LATEXTEMPLATE>/$shortname/g" $shortname/*
+sed -i "s/<LATEXTEMPLATE>/$shortname/g" $shortname/\<LATEXTEMPLATE\>.tex
+sed -i "s/<LATEXTEMPLATE>/$shortname/g" $shortname/Makefile
 
 echo "set date in template-file"
 sed -i "s/<DATUM>/$current_date/g" $shortname/*

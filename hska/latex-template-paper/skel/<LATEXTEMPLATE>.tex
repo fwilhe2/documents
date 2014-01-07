@@ -18,9 +18,7 @@
 % Einbinden von Grafiken
 \usepackage{graphicx}
 
-% Syntax-Highliting für Quelltext
-% Benötigt die zusätzlichen Optionen "-shell-escape -interaction=nonstopmode" zum bauen.
-\usepackage{minted} 
+\usepackage{listings}
 
 % Setzen der Eigenschaften der erzeugten PDF-Datei
 % TODO: Immer schön anpassen!
@@ -52,9 +50,12 @@
 
 \begin{document}
 
+% Zeilenumbrüche in Code-listings
+\lstset{breaklines=true}
+
 \begin{titlepage}
 \title{<LATEXTEMPLATE>}
-\author{Florian Wilhelm\\Matrikelnummer 36873}
+\author{Florian Wilhelm}
 \date{\today}
 \maketitle
 \end{titlepage}
@@ -87,15 +88,12 @@ Lorem ipsum.
 
 \section{Hauptteil}
 
-\subsection{Quellcode-Listing mit minted}
+\subsection{Quellcode-Listing}
 
-\begin{listing}
-\begin{minted}[]{java}
-  for(int i = 0; i < 42; i++) {
-    System.out.println(i*3.14159);
-  }
-\end{minted}
-\end{listing}
+\lstinputlisting
+    [caption={Beispiel-Listing},
+       captionpos=b, label=lst:code_listing_example]
+ {listings/HelloWorld.java}
 
 \subsubsection{Umlaute}
 
