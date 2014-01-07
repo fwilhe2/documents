@@ -1,0 +1,52 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc} 
+
+\usetheme{Ilmenau}
+
+%remove navigation symbols
+%http://stackoverflow.com/questions/3017030/hiding-the-presentation-controls-in-latex-beamer-presentation
+\setbeamertemplate{navigation symbols}{}
+
+\title[]{Some title}
+\author{Florian Wilhelm}
+\date{\today{}}
+
+\begin{document}
+
+% Titelseite
+\frame{
+	\titlepage
+}
+
+% Inhaltsverzeichnis
+\frame{
+	\frametitle{Inhaltsverzeichnis}
+	\tableofcontents
+}
+
+\section{Some section}
+
+\setcounter{subsection}{1}
+\begin{frame} 
+  \frametitle{Frame 0}
+  bla bla
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Frame 1}
+   \begin{itemize}
+    \item{a}
+    \item{b}
+    \item{c}
+    \item{d}
+   \end{itemize}
+\end{frame}
+
+\section{}
+\begin{frame}
+  Vielen Dank für Ihre Aufmerksamkeit
+\end{frame}
+
+\end{document}
