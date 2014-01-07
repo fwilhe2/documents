@@ -1,0 +1,264 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc} 
+
+\usetheme{Ilmenau}
+
+%remove navigation symbols
+%http://stackoverflow.com/questions/3017030/hiding-the-presentation-controls-in-latex-beamer-presentation
+\setbeamertemplate{navigation symbols}{}
+
+\title[]{Systematisches Vorgehen zum Beheben eines Software-Fehlers}
+\author{Florian Wilhelm}
+\date{7. Januar 2014}
+
+\begin{document}
+
+% Titelseite
+\frame{
+	\titlepage
+}
+
+% Inhaltsverzeichnis
+\frame{
+	\frametitle{Inhaltsverzeichnis}
+	\tableofcontents
+}
+
+\section{Problemstellung}
+
+\setcounter{subsection}{1}
+\begin{frame} 
+  \frametitle{Der Ausbildungsberuf}
+    \emph{Fachinformatiker} Fachrichtung \emph{Anwendungsentwicklung}
+    
+    Dreijährige duale Ausbildung
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Der Ausbildungsbetrieb}
+   \begin{itemize}
+    \item{\emph{Unternehmensberatung Müller Informatik GmbH (UMI GmbH)} mit Sitz in Bruchsal}
+    \item{Mittelständisches Systemhaus}
+    \item{Bietet volles Spektrum an IT-Dienstleistungen: Von Systemintegration bis Softwareentwicklung}
+    \item{Kunden sind vor allem soziale Einrichtungen und Stadtwerke}
+    \item{ca. 300 Mitarbeiter}
+    \item{Abteilung \emph{Programmentwicklung}}
+   \end{itemize}
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame} 
+  \frametitle{Die Ausbildungssituation}
+    \emph{Softwarefehler:}
+    \leavevmode\hphantom{ } % Newline
+    Ein Kunde meldet sich bei unserem Support: \glqq Das Programm arbeitet seit dem Update immer sehr langsam! Dann müssen wir den Computer neu starten!\grqq{}
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Der Auszubildende}
+   \begin{itemize}
+    \item{Max Schmidt, 19 Jahre}
+    \item{Seit September 2013 im Unternehmen, 1. Lehrjahr}
+    \item{Bildung: Mittlere Reife + Berufskolleg mit FH-Reife}
+    \item{Begann schon in der Schule zu programmieren}
+    \item{Beherrscht Zehnfingersystem mit 200 Anschlägen pro Minute}
+   \end{itemize}
+\end{frame}
+
+\section{Lernziele}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Richt- und Groblernziele}
+   Die Lernziele sind entnommen aus dem \emph{Ausbildungsrahmenplan Fachinformatiker / Fachinformatikerin} der IHK.
+   
+   \textbf{Richtlernziel:}
+   
+   \emph{Kundenspezifische Anpassung und Softwarepflege (§ 10 Abs. 2 Nr. 9.1)}
+   
+   \textbf{Groblernziel:}
+   
+   \emph{d) Fehler beseitigen}
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Feinlernziele}
+  \framesubtitle{Kognitiver Bereich}
+    Der Auszubildende ist nach der Unterweisung in der Lage \ldots
+
+    \begin{itemize}
+      \item{den Umgang mit den im Betrieb verwendeten Softwareentwicklungswerkzeugen}
+      \item{eine systematische Vorgehensweise zur Fehlersuche}
+      \item{Vorgehensweisen zum logischen Eingrenzen der Fehlerquelle durch Ausschließen von irreführenden Informationen}
+    \end{itemize}
+
+    zu kennen.
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Feinlernziele}
+  \framesubtitle{Affektiver Bereich}
+    Der Auszubildende ist nach der Unterweisung in der Lage die \ldots
+
+    \begin{itemize}
+      \item{gebotene Sorgfalt im Umgang mit Kundeninformationen}
+      \item{Einhaltung von Datenschutzbestimmungen}
+      \item{Einhaltung des Urheberrechts am Quellcode der Software}
+    \end{itemize}
+
+    zu beachten.
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Feinlernziele}
+  \framesubtitle{Psychomotorischer Bereich}
+   Wird nicht angesprochen in dieser Unterweisung.
+   
+   (Sicherer Umgang mit Maus und Tastatur (Zehnfingersystem) wird vorausgesetzt.)
+\end{frame}
+
+\section{Die gewählte (Unterweisungs-)Methode}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Lehrgespräch}
+  
+    Es wird ein handlungsorientiertes Lehrgespräch durchgeführt.
+  
+    Ablauf:
+  
+    \begin{enumerate}
+      \item{Informationsinput durch Ausbilder}
+      \item{Einbeziehung von Erfahrungen des Azubi}
+      \item{Sammeln der Fakten}
+      \item{Zusammenfassen und gegebenenfalls Ergänzen durch weitere Informationen}  
+    \end{enumerate}
+    
+    Modifikation: Eigenarbeitsphase des Azubi zwischen Punkt 3 und 4
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Alternative Methoden}
+    \framesubtitle{Vier-Stufen-Methode}
+    
+    \begin{enumerate}
+      \item{Vorbereiten}
+      \item{Vormachen}
+      \item{Nachmachen}
+      \item{Üben}  
+    \end{enumerate}    
+      
+      Nachteil: Zu sehr fixiert auf Nachmachen einer Tätigkeit, schult nicht eigenständiges Denken
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Alternative Methoden}
+    \framesubtitle{Projektmethode}
+   
+    \begin{enumerate}
+      \item{Themenfindung}
+      \item{Planung des Projektablaufs}
+      \item{Durchführung}
+      \item{Kontrolle der Ergebnisse}  
+      \item{Dokumentation}
+    \end{enumerate}        
+    
+      Nachteil: Passt weniger gut zum natürlichen Arbeitsablauf; eher für Entwicklung neuer Programmteile geeignet als zur Fehlersuche
+\end{frame}
+
+\section{Verlaufsplan}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Vorbereitung}
+  
+        \begin{tabular}{|p{3.3cm}|p{3.3cm}|p{3.3cm}|}
+        \hline
+        WAS & WIE & WARUM \\ \hline
+        Hotlineanruf \mbox{entgegennehmen} & Telefonisch & Kunde hat ein \mbox{Problem} \\ \hline
+       \end{tabular}  
+            
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Teil 1: Input vom Ausbilder}
+  
+        \begin{tabular}{|p{3.3cm}|p{3.3cm}|p{3.3cm}|}
+        \hline
+        WAS & WIE & WARUM \\ \hline
+        Azubi herbeirufen und begrüßen & Verbal & Spannende Aufgabe für ihn \\ \hline
+        Fehler demonstrieren & Verbal / am PC & Problembewusstsein wecken \\ \hline
+       \end{tabular}
+
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Teil 2: Einbeziehen der Erfahrungen des Azubi}
+
+        \begin{tabular}{|p{3.3cm}|p{1.3cm}|p{5.3cm}|}
+        \hline
+        WAS & WIE & WARUM \\ \hline
+        Nach Vorkentnissen/Erfahrungen fragen & Verbal & Motivieren; in Problemanalyse einbinden \\ \hline
+        Nach Vermutungen für Fehlerursache fragen & Verbal & Zum Mitdenken motivieren \\ \hline
+       \end{tabular}        
+
+
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Teil 3: Sammeln der Fakten}
+  
+        \begin{tabular}{|p{3.3cm}|p{3.3cm}|p{3.3cm}|}
+        \hline
+        WAS & WIE & WARUM \\ \hline
+        Diskussion über mögliche Fehlerquellen & Whiteboard zur \mbox{Visualisierung} & Schulen des analytischen Denkens und logischen Schließens \\ \hline
+        Diskussion einer Lösungsmöglichkeit & Whiteboard zur \mbox{Visualisierung} & Vorbereitung für vom Azubi zu erbringende Leistung \\ \hline
+       \end{tabular}
+
+  
+
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Einschub: Eigenarbeit des Azubis}
+  
+        \begin{tabular}{|p{3.3cm}|p{1.3cm}|p{5.3cm}|}
+        \hline
+        WAS & WIE & WARUM \\ \hline
+        Azubi ca. 4 Stunden Zeit lassen um das Problem zu lösen & PC & Größter Lerneffekt ist zu erwarten wenn der Azubi das Problem selbst lösen kann \\ \hline
+       \end{tabular}  
+
+\end{frame}
+
+\setcounter{subsection}{1}
+\begin{frame}
+  \frametitle{Teil 4: Zusammenfassen und Ergänzen}
+  
+        \begin{tabular}{|p{3.3cm}|p{3.3cm}|p{3.3cm}|}
+        \hline
+        WAS & WIE & WARUM \\ \hline
+        Besprechen der \mbox{Arbeitsergebnisse} & Verbal / PC & Qualitätskontrolle; Ggf. um Hilfestellung leisten zu können \\ \hline
+        Azubi Software-Tests durchführen lassen & PC & Qualitätskontrolle; Lernziel \glqq Sorgfältiges \mbox{Arbeiten}\grqq{} \\ \hline
+        Fakten von Azubi auf Whiteboard zusammenfassen und in Berichtsheft übernehmen lassen & Verbal / Whiteboard zur Visualisierung & Lernzielkontrolle: Wenn Azubi es verstanden hat kann er es erklären \\ \hline         
+       \end{tabular}
+
+\end{frame}
+
+\section{}
+\begin{frame}
+  Vielen Dank für Ihre Aufmerksamkeit
+\end{frame}
+
+\end{document}
