@@ -1,29 +1,43 @@
 \include{include/preamble}
+\include{include/commands}
 
 \begin{document}
 
-as figure \ref{pic:foo} shows bla bla
+\chapter{What?!}
+
+This is a playground for the perfect\texttrademark{} \LaTeX{} document
+
+\chapter{Pics or did not happen!}
+
+As figure \ref{pic:foo} shows, one must not remember so much stuff to make pictures!
 
 \insertPicture{foo}{bar}
 
+\chapter{You got code? Share it maybe?}
 
-Inline code: \code{public static void main()}
+Inline code: \code{doSomeSuperMagic(unicorn, 42)}
 
-As we can see in listing \ref{Main.java}
+As we can see in listing \ref{Main.java}, making listings can be easy, too.
 
-Code from file:
 \insertListing{Main.java}{blah}
 
+\chapter{Insert empty page}
 
+Say for some reason, you need a intentionally blank page. What do you do? Easy:
 
+\insertEmptyPage
+
+\chapter{Semantic markup ftw!}
+
+Don't specify how things should look, specify what they are, then you can change the look in a single location!
 
 \relation{bobby}
 
 \column{tables}
 
-\cite{SomeRef}
+\chapter{Just a little bibtex test}
 
-\blindtext
+\blindtext~\cite{SomeRef}
 
 \bibliographystyle{ieeetr}
 \bibliography{moonproject}

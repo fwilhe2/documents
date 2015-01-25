@@ -1,0 +1,22 @@
+
+\newcommand{\insertPicture}[2]{
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{picture/#1.png}
+    \caption{#2}
+    \label{pic:#1}
+  \end{figure}
+}
+
+\newcommand{\insertListing}[2]{
+  \lstinputlisting[language=Java,label=#1,caption={#2.}]{listing/#1}
+}
+
+\newcommand{\insertEmptyPage}{\input{include/empty}}
+
+\newcommand{\todo}[1]{\textbf{TODO: #1}}
+
+% Commands for logical markup of terms. Make all code, database tables etc look the same.
+\newcommand{\relation}[1]{\textsf{#1}}
+\newcommand{\column}[1]{\textsf{#1}}
+\newcommand{\code}[1]{\lstinline$#1$}
