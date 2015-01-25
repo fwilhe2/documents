@@ -1,0 +1,59 @@
+\documentclass[
+pdftex,
+a4paper,
+11pt,
+listof=totoc,index=totoc,bibliography=totoc
+]{scrreprt}
+
+\usepackage[utf8]{inputenc} 
+\usepackage{graphicx}
+\usepackage{listings}
+
+\usepackage{blindtext}
+\usepackage{refcheck}
+
+\usepackage[pdftex,
+    pdfauthor={Florian Wilhelm},
+    pdfsubject={TODO},
+    pdftitle={TODO},
+    pdfproducer={LaTeX with hyperref},
+    pdfpagemode=UseOutlines,
+    pdfcreator={pdflatex},
+    breaklinks]
+{hyperref}
+
+\newcommand{\insertPicture}[2]{
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=\textwidth]{picture/#1.png}
+		\caption{#2}
+		\label{pic:#1}
+	\end{figure}
+}
+
+\newcommand{\insertListing}[2]{
+	\lstinputlisting[language=Java,label=#1,caption={#2.}]{listing/#1}
+}
+
+\newcommand{\todo}[1]{\textbf{TODO: #1}}
+
+% Commands for logical markup of terms. Make all code, database tables etc look the same.
+\newcommand{\relation}[1]{\textsf{#1}}
+\newcommand{\column}[1]{\textsf{#1}}
+\newcommand{\code}[1]{\lstinline$#1$}
+
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+        breaklines=true,
+        basicstyle=\small\fontfamily{lmtt}\selectfont,
+        captionpos=b,
+        stringstyle=\color{mymauve},
+        numberstyle=\tiny\color{mygray},
+        keywordstyle=\color{blue},
+        commentstyle=\color{mygreen}
+}
