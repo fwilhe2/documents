@@ -49,6 +49,14 @@ Uses pandoc to create a docx-file for spell-checking purposes. Do not expect a p
 
 Uses detex to create a plain text file for spell-checking purposes. Do not expect a perfect plain-text-file.
 
+## clean
+
+Delets all(?) generated files, including the pdf. I do this always before commiting.
+
+## run
+
+Uses xdg-open to open the compiled file in a PDF viewer.
+
 # Sources
 
 [General hints on modern LaTeX](http://www.olivierverdier.com/posts/2013/07/15/modern-latex)
