@@ -2,9 +2,26 @@
 
 # Setup
 
-## Install inotify-tools (needed for make loop)
+## Install Make
 
+```
+sudo apt-get install build-essential
+```
+
+(Yes, this is not just make, but I find it handy to use the meta package..)
+
+## Install LaTeX
+
+```
+sudo apt-get install texlive-full
+```
+
+## Install inotify-tools 
+needed for `make loop`
+
+```
 sudo apt-get install inotify-tools
+```
 
 # Sources
 
