@@ -4,7 +4,7 @@ Various (LaTeX)-documents.
 
 ## hska
 
-Documents that I wrote for my studies at Hochscule Karlsruhe
+Documents that I wrote for my compsci studies at Hochschule Karlsruhe.
 
 ## moonproject
 
