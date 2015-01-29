@@ -17,7 +17,7 @@ fast:
 test:
 	pdflatex $(DOCUMENT).tex -interaction=nonstopmode -halt-on-error > /dev/null
 	bibtex $(DOCUMENT) > /dev/null
-	pdflatex $(DOCUMENT).tex | grep -i ".*:[0-9]*:.*\|warning" # Quelle: http://tex.stackexchange.com/a/27881
+	pdflatex $(DOCUMENT).tex | grep -i ".*:[0-9]*:.*\|warning"
 	lacheck bachelorthesis_florian_wilhelm.tex > lacheck.$(NOW).log.txt
 	chktex bachelorthesis_florian_wilhelm.tex > chktex.$(NOW).log.txt  2>&1
 
