@@ -14,7 +14,7 @@
 #### Speedup
 
 | Variable | Bedeutung |
-| -- | -- |
+| ----- | ----- |
 | $Ts$ | Sequentielle Laufzeit |
 | $Tp$ | Parallele Laufzeit |
 | $S$  | Speedup |
@@ -25,7 +25,7 @@ $S = \frac{Ts}{Tp}$
 #### Effizienz
 
 | Variable | Bedeutung |
-| -- | -- |
+| ----- | ----- |
 |$E$ | Effizienz |
 |$P$ | Anzahl Prozessoren (optimaler Speedup) |
 
