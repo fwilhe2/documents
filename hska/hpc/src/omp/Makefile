@@ -1,2 +1,2 @@
-CFLAGS = -m64 -O3 -fopenmp
+CFLAGS = -m64 -O3 -fopenmp -Wall
 
