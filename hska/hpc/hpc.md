@@ -5,8 +5,8 @@ Zusammenfassung _I W909 High Performance Computing_ WS 14/15
 
 ## Literatur
 
-* [Parallele Programmierung](htt_{P}://link.springer.com/book/10.1007%2F978-3-642-13604-7)
-* [The OpenCL Programming Book](htt_{P}://www.fixstars.com/en/opencl/book/)
+* [Parallele Programmierung](http://link.springer.com/book/10.1007%2F978-3-642-13604-7)
+* [The OpenCL Programming Book](http://www.fixstars.com/en/opencl/book/)
 
 ## Wichtige Kennzahlen
 
@@ -86,7 +86,22 @@ $S = t_{S} + P * t_{P}$
 [openmp.org](www.openmp.org)
 
 * Code läuft per Default sequentiell, wird nur bei Bedarf parallelisiert
-* 
+* Steuerung über Compilerdirektiven (#pragma)
+* Variablen können shared und private sein
+
+```c
+int s = 0;
+int p;
+#pragma omp parallel shared(s) private(p)
+{
+  p = 0;
+  s++;
+  p++;
+  printf("s = %d\n", s);
+  printf("p = %d\n", p);
+}
+```
+
 
 # 3 MPI
 
@@ -113,7 +128,3 @@ $S = t_{S} + P * t_{P}$
 
 
 # 9 Patterns
-
-
-
-
