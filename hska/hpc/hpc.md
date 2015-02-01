@@ -83,7 +83,10 @@ $S = t_{S} + P * t_{P}$
 
 # 2 openMP
 
+[openmp.org](www.openmp.org)
 
+* Code läuft per Default sequentiell, wird nur bei Bedarf parallelisiert
+* 
 
 # 3 MPI
 
