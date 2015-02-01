@@ -1,17 +1,16 @@
-# Zusammenfassung _I W909 High Performance Computing_ WS 14/15
+Zusammenfassung _I W909 High Performance Computing_ WS 14/15
+============================================================
 
+# 1 Introduction
 
-
-## 1 Introduction
-
-### Literatur
+## Literatur
 
 * [Parallele Programmierung](http://link.springer.com/book/10.1007%2F978-3-642-13604-7)
 * [The OpenCL Programming Book](http://www.fixstars.com/en/opencl/book/)
 
-### Wichtige Kennzahlen
+## Wichtige Kennzahlen
 
-#### Speedup
+### Speedup
 
 | Variable | Bedeutung |
 | ----- | ----- |
@@ -22,7 +21,7 @@
 $S = \frac{Ts}{Tp}$
 
 
-#### Effizienz
+### Effizienz
 
 | Variable | Bedeutung |
 | ----- | ----- |
@@ -31,35 +30,35 @@ $S = \frac{Ts}{Tp}$
 
 $E = \frac{S}{P}$
 
-## 2 openMP
+# 2 openMP
 
 
 
-## 3 MPI
+# 3 MPI
 
 
 
-## 4 CPU
+# 4 CPU
 
 
 
-## 5 Performance
+# 5 Performance
 
 
 
-## 6 Errors
+# 6 Errors
 
 
 
-## 7 Networks
+# 7 Networks
 
 
 
-## 8 GPU / OpenCl
+# 8 GPU / OpenCl
 
 
 
-## 9 Patterns
+# 9 Patterns
 
 
 
