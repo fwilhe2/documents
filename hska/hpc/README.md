@@ -4,7 +4,21 @@
 
 ## 1 Introduction
 
+### Literatur
 
+* [Parallele Programmierung](http://link.springer.com/book/10.1007%2F978-3-642-13604-7)
+* [The OpenCL Programming Book](http://www.fixstars.com/en/opencl/book/)
+
+### Wichtige Kennzahlen
+
+#### Speedup
+
+$S = \frac{Ts}{Tp}$
+
+
+#### Effizienz
+
+$E = \frac{S}{P}$
 
 ## 2 openMP
 
