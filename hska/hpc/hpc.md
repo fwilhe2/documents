@@ -101,7 +101,31 @@ int p;
   printf("p = %d\n", p);
 }
 ```
+> s ist am Ende 4, p ist 1
 
+```c
+int num_threads;
+int id;
+
+#pragma omp parallel private(id, num_threads)
+{
+  num_threads = omp_get_num_threads();
+  id = omp_get_thread_num();
+  printf("Hello, my Id is: %d %d \n", id, num_threads);
+}
+```
+
+## barrier
+
+Erst wenn alle Threads diese Stelle erreicht haben dürfen sie weiter machen.
+
+## critical
+
+Nur ein Thread darf diesen Code ausführen.
+
+## atomic
+
+Der Code wird atomar (ohne Unterbrechung) ausgeführt.
 
 # 3 MPI
 
