@@ -20,6 +20,13 @@ Zusammenfassung _I W909 High Performance Computing_ WS 14/15
 
 $S = \frac{t_{S}}{t_{P}}$
 
+Beispiel für Speedup
+
+$t_{S} = 60$ Sekunden
+
+$t_{P} = 30$ Sekunden
+
+$S = \frac{60}{30} = 2$
 
 ### Effizienz
 
@@ -29,6 +36,14 @@ $S = \frac{t_{S}}{t_{P}}$
 |$P$ | Anzahl Prozessoren (optimaler Speedup) |
 
 $E = \frac{S}{P}$
+
+Beispiel für Effizienz
+
+$S = 10$
+
+$P = 16$
+
+$E = \frac{10}{16} = 0.625$
 
 ### Amdahl
 
