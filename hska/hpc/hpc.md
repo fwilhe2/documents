@@ -189,8 +189,7 @@ int MPI_Init(int *argc, char ***argv);
 ### MPI_Send
 
 ```c
-int MPI_Send(void *buffer, int count, MPI_Datatype datatype, int destination,
-  int tag, MPI_Comm communicator);
+int MPI_Send(void *buffer, int count, MPI_Datatype datatype, int destination, int tag, MPI_Comm communicator);
 ```
 #### Out Parameters
 * none
@@ -198,8 +197,7 @@ int MPI_Send(void *buffer, int count, MPI_Datatype datatype, int destination,
 ### MPI_Recv
 
 ```c
-int MPI_Recv(void *buffer, int count, MPI_Datatype datatype, int source,
-  int tag, MPI_Comm communicator, MPI_Status status);
+int MPI_Recv(void *buffer, int count, MPI_Datatype datatype, int source, int tag, MPI_Comm communicator, MPI_Status status);
 ```
 #### Out Parameters
 * `buffer`
@@ -208,9 +206,7 @@ int MPI_Recv(void *buffer, int count, MPI_Datatype datatype, int source,
 ### MPI_Reduce
 
 ```c
-int MPI_Reduce(void *sendbuffer, void *recievebuffer, int count,
-  MPI_Datatype datatype, MPI_Op operation, int rootprocess,
-  MPI_Comm communicator);
+int MPI_Reduce(void *sendbuffer, void *recievebuffer, int count, MPI_Datatype datatype, MPI_Op operation, int rootprocess, MPI_Comm communicator);
 ```
 #### Out Parameters
 * `recievebuffer`
@@ -230,6 +226,13 @@ int MPI_Reduce(void *sendbuffer, void *recievebuffer, int count,
 
 
 # 5 Performance
+
+## Performance Modellierung
+
+### Timing Modell von Van de Velde
+
+Buch von van de Velde [Concurrent Scientific Computing](http://www.springer.com/mathematics/analysis/book/978-0-387-94195-0) (Leider nicht über SpringerLink erhältlich)
+
 
 
 
