@@ -42,11 +42,43 @@ $S = \frac{1}{t_{S} + \frac{t_{P}}{P}} = \frac{1}{(1 - t_{P}) + \frac{t_{P}}{P}}
 
 > Parallelisierung bringt keinen wesentlichen Speedup und ist nicht effizient.
 
+Beispiel für Amdahl mit 5% parallelem Anteil und steigener Anzahl an CPUs.
+
+$S$      | $t_{S}$| $t_{P}$| $P$
+---------|--------|--------|------
+1,00     |  0,05  |  0,95  |  1
+1,90     |        |        |  2
+3,48     |        |        |  4
+5,93     |        |        |  8
+9,14     |        |        |  16  
+12,55    |        |        |  32  
+15,42    |        |        |  64  
+17,41    |        |        |  128
+18,66    |        |        |  265
+19,28    |        |        |  512
+19,64    |        |        |  1024
+
 ### Gustafson
 
 $S = t_{S} + P * t_{P}$
 
 > Parallelisierung kann jeden Speedup und einen hohen Grad an Effizienz erreichen wenn das Problem groß genug ist und genug CPU genutzt wird.
+
+Gleiches Beispiel wie bei Amdahl
+
+$S$      | $t_{S}$| $t_{P}$| $P$
+---------|--------|--------|------
+1,00     |  0,05  |  0,95  |  1
+1,95     |        |        |  2
+3,85     |        |        |  4
+7,65     |        |        |  8
+15,25    |        |        |  16  
+30,45    |        |        |  32  
+60,85    |        |        |  64  
+121,65   |        |        |  128
+251,80   |        |        |  265
+486,45   |        |        |  512
+972,85   |        |        |  1024
 
 
 ## Speichermodelle
@@ -129,6 +161,53 @@ Der Code wird atomar (ohne Unterbrechung) ausgeführt.
 
 # 3 MPI
 
+[MPI Funktionen](http://mpi.deino.net/mpi_functions/)
+
+## MPI API Summary
+
+### MPI_Init
+
+```c
+int MPI_Init(int *argc, char ***argv);
+```
+
+### MPI_Send
+
+```c
+int MPI_Send(void *buffer, int count, MPI_Datatype datatype, int destination,
+  int tag, MPI_Comm communicator);
+```
+#### Out Parameters
+* none
+
+### MPI_Recv
+
+```c
+int MPI_Recv(void *buffer, int count, MPI_Datatype datatype, int source,
+  int tag, MPI_Comm communicator, MPI_Status status);
+```
+#### Out Parameters
+* `buffer`
+* `status`
+
+### MPI_Reduce
+
+```c
+int MPI_Reduce(void *sendbuffer, void *recievebuffer, int count,
+  MPI_Datatype datatype, MPI_Op operation, int rootprocess,
+  MPI_Comm communicator);
+```
+#### Out Parameters
+* `recievebuffer`
+
+
+```c
+
+```
+
+```c
+
+```
 
 
 # 4 CPU
