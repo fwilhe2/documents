@@ -136,7 +136,7 @@ $S$      | $t_{S}$| $t_{P}$| $P$
 * Steuerung über Compilerdirektiven (#pragma)
 * Variablen können shared und private sein
 
-```c
+```{breaklines=true .c}
 int s = 0;
 int p;
 #pragma omp parallel shared(s) private(p)
@@ -150,7 +150,7 @@ int p;
 ```
 > s ist am Ende 4, p ist 1
 
-```c
+```{breaklines=true .c}
 int num_threads;
 int id;
 
@@ -182,13 +182,13 @@ Der Code wird atomar (ohne Unterbrechung) ausgeführt.
 
 ### MPI_Init
 
-```c
+```{breaklines=true .c}
 int MPI_Init(int *argc, char ***argv);
 ```
 
 ### MPI_Send
 
-```c
+```{breaklines=true .c}
 int MPI_Send(void *buffer, int count, MPI_Datatype datatype, int destination, int tag, MPI_Comm communicator);
 ```
 #### Out Parameters
@@ -196,7 +196,7 @@ int MPI_Send(void *buffer, int count, MPI_Datatype datatype, int destination, in
 
 ### MPI_Recv
 
-```c
+```{breaklines=true .c}
 int MPI_Recv(void *buffer, int count, MPI_Datatype datatype, int source, int tag, MPI_Comm communicator, MPI_Status status);
 ```
 #### Out Parameters
@@ -205,18 +205,18 @@ int MPI_Recv(void *buffer, int count, MPI_Datatype datatype, int source, int tag
 
 ### MPI_Reduce
 
-```c
+```{breaklines=true .c}
 int MPI_Reduce(void *sendbuffer, void *recievebuffer, int count, MPI_Datatype datatype, MPI_Op operation, int rootprocess, MPI_Comm communicator);
 ```
 #### Out Parameters
 * `recievebuffer`
 
 
-```c
+```{breaklines=true .c}
 
 ```
 
-```c
+```{breaklines=true .c}
 
 ```
 
