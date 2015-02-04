@@ -1,5 +1,14 @@
-Zusammenfassung _I W909 High Performance Computing_ WS 14/15
-============================================================
+Zusammenfassung _I W909 High Performance Computing_
+
+Wintersemester 2014/2015
+
+Florian Wilhelm
+
+Markdown Quelle: https://github.com/sputnik27/documents/tree/master/hska/hpc
+
+Ilias Link zur Vorlesung: https://ilias.hs-karlsruhe.de/goto.php?target=crs_29413&client_id=HSKA
+
+Fachschaftswiki zur Vorlesung: https://www.hska.info/vorlesungen/unterlagen/highperformancecomputing
 
 # 1 Introduction
 
