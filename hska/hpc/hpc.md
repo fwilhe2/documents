@@ -12,6 +12,9 @@ Zusammenfassung _I W909 High Performance Computing_ WS 14/15
 
 ### Speedup
 
+* Maß für relativen Geschwindigkeitsgewinn
+* Verhältnis zwischen sequentieller und paralleler Ausführungszeit
+
 | Variable | Bedeutung |
 | ----- | ----- |
 | $t_{S}$ | Sequentielle Laufzeit |
@@ -27,6 +30,11 @@ $t_{S} = 60$ Sekunden
 $t_{P} = 30$ Sekunden
 
 $S = \frac{60}{30} = 2$
+
+* Idealer Speedup ist gleich Anzahl der Prozessoren
+* Programme sind in der Regel nicht voll parallelisierbar (aufgrund von Datenabhängigkeiten)
+* Möglich: Superlinearer Speedup (mehr als Anzahl Prozessoren) durch Cache-Effekte
+
 
 ### Effizienz
 
@@ -45,6 +53,9 @@ $P = 16$
 
 $E = \frac{10}{16} = 0.625$
 
+* Ideale Effizienz: 1
+* Wertebereich $E \in {[0,1]}$
+
 ### Amdahl
 
 | Variable | Bedeutung |
@@ -55,7 +66,11 @@ $E = \frac{10}{16} = 0.625$
 
 $S = \frac{1}{t_{S} + \frac{t_{P}}{P}} = \frac{1}{(1 - t_{P}) + \frac{t_{P}}{P}}$
 
-> Parallelisierung bringt keinen wesentlichen Speedup und ist nicht effizient.
+* Pessimistische Abschätzung. Aussage: Parallelisierung bringt keinen wesentlichen Speedup und ist nicht effizient.
+* Größtmögliche Beschleunigung ist linear
+* Problemgröße spielt keine Rolle
+
+![Illustration von Amdahl's Abschätzung (Lizenz: CC BY-SA Daniels220 at English Wikipedia http://commons.wikimedia.org/wiki/File:AmdahlsLaw.svg)](picture/AmdahlsLaw_german.png)
 
 Beispiel für Amdahl mit 5% parallelem Anteil und steigener Anzahl an CPUs.
 
@@ -77,7 +92,9 @@ $S$      | $t_{S}$| $t_{P}$| $P$
 
 $S = t_{S} + P * t_{P}$
 
-> Parallelisierung kann jeden Speedup und einen hohen Grad an Effizienz erreichen wenn das Problem groß genug ist und genug CPU genutzt wird.
+* [Paper von Gustafson](http://www.johngustafson.net/pubs/pub13/amdahl.htm)
+* Bezieht Problemgröße mit ein
+* Aussage: Parallelisierung kann jeden Speedup und einen hohen Grad an Effizienz erreichen wenn das Problem groß genug ist und genug CPU genutzt wird.
 
 Gleiches Beispiel wie bei Amdahl
 
@@ -95,6 +112,16 @@ $S$      | $t_{S}$| $t_{P}$| $P$
 486,45   |        |        |  512
 972,85   |        |        |  1024
 
+### FLOPS
+
+* Floating Point Operations Per Second
+* Anzahl der Gleitkommaoperationen (Addition, Subtraktion und/oder Multiplikation, Division) pro Sekunde
+
+
+### FLOPS pro Watt
+
+* Maß für Energieeffizienz
+* Proportional zu Kosten (Strom)
 
 ## Speichermodelle
 
