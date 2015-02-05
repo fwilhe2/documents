@@ -407,6 +407,94 @@ Zentrale Liste
 CC beobachtet Bus/Switch (Medium für gemeinsamen Speicherzugriff)
 
 
+#### Modified-Shared-Invalid (MSI)
+
+* Annahme: Write-Back Strategie
+* Drei Zustände für Cacheblock
+	* Modified *dirty*
+	
+Block ist verändert, nur ein Cache hat die aktuelle Version.
+	
+	* Shared *clean*
+	
+Block ist in einem oder mehreren Caches in gleichem Zustand gespeichert.
+	
+	* Invalid
+	
+Block hat ungültigen (veralteten) Wert.
+
+* MSI-Prozessor-Events
+	* PrRd (read)
+	
+**Leseoperation** eines Prozessors auf einem Speicherblock
+	
+	* PrWr (write)
+
+**Schreiboperation** eines Prozessors auf einem Speicherblock
+
+	* BusRd (Bus Read)
+	
+Prozessor will **Leseoperation** auf einem Speicherblock durchführen
+
+	* BusRdEx (Bus Read Exclusive)
+	
+**Schreiboperation** auf Block der nicht im Cache ist oder nicht **modifiziert** wurde. Alle anderen Kopien werden als **invalid** markiert.
+Achtung: Hat "Read" im Namen, aber verändert den Wert!
+
+	* Flush
+	
+Update des RAM, Wert wird über Bus an auslösenden Cache übertragen
+
+
+
+#### Modified-Exclusive-Invalid (MESI)
+
+* Erweiterung von MSI
+* Weiterer Zustand
+	* Exclusive *clean*
+	
+Nur der betrachtete Cache hält eine Kopie des Speicherblocks.
+
+* Bus-Operationen
+	* Gleiche wie MSI
+	* BusUpgr
+
+Prozessor will Schreiboperation auf einem Speicherblock ausführen, der bereits in einem anderen Cache ist.	
+	
+	* FlushOpt (cache-to-cache)
+
+Block wird über Bus von Cache A nach Cache B übertragen. Dieses Feature ist optional und wird nicht für korrektes Arbeiten benötigt.
+
+Wie wird entschieden ob von **Invalid** nach **Exclusive** oder **Shared** gewechselt wird? -> Es muss geprüft werden, ob schon jemand eine Kopie besitzt und dies mit Signal auf dem Bus signalisiert werden.
+
+
+
+#### Modified-Owner-Exclusive (MOESI)
+
+* Weiterer Zustand
+	* Owner *dirty*
+	
+Kopie des Blocks in anderen Caches, aber **Owner** ist verantwortlich, Daten zur Verfügung zu stellen, wenn er entsprechende Busoperationen sieht.
+
+#### Dragon Writeback Update
+
+* 4 Zustände
+	* (E) Exclusive-clean
+	
+Cache und RAM besitzen Wert.
+
+	* (Sc) Shared-clean
+
+Aktueller Cache und andere Caches (und möglicherweise RAM) besitzen den Wert. Aktueller Cache ist nicht **Owner**.
+
+	* (Sm) Shared-modified
+
+Aktueller Cache und andere Caches (nicht der RAM) besitzen den Wert. Aktueller Cache ist **Owner**.
+
+	* (M) Modified *dirty*
+	
+Nur aktueller Cache besitzt den Wert.
+
 
 ## SIMD
 
