@@ -67,6 +67,8 @@ $E = \frac{10}{16} = 0.625$
 
 ### Amdahl
 
+[Wikipedia - Amdahl's law](http://en.wikipedia.org/wiki/Amdahl%27s_law)
+
 | Variable | Bedeutung |
 | ----- | ----- |
 |$t_{S}$ | Anteil der sequentiell ausgeführt wird |
@@ -108,6 +110,8 @@ $S$      | $t_{S}$| $t_{P}$| $P$
 
 
 ### Gustafson
+
+[Wikipedia - Gustafson's law](http://en.wikipedia.org/wiki/Gustafson%27s_law)
 
 $S = t_{S} + P * t_{P}$
 
@@ -278,6 +282,133 @@ int MPI_Reduce(void *sendbuffer, void *recievebuffer, int count, MPI_Datatype da
 
 
 # 4 CPU
+
+## CPU und Caches
+
+### Speicherhierarchie
+
+Es gibt kleinen und schnellen Speicher, und langsamen und billigen.
+
+Es gilt folgende Hirachie (von schnell nach langsam)
+
+* Register
+* L1 Cache
+* L2 und L3 Cache
+* Hauptspeicher
+* Solid State Disk
+* Festplatte
+* Optische Datenträger
+* Magnetische Datenträger
+
+
+
+## Von-Neumann-Zyklus
+
+fetch -> decode -> fetch operands -> execute -> write back --> fetch ..
+
+Optimierungen für diesen Zyklus
+
+* Höhere Bitparallelität (64 statt 32 Bit)
+* Komplexes Rechenwerk (weniger Zyklen)
+* Prefetching
+* Mehrere Recheneinheiten (superskalare CPUs)
+	* Beschleunigt die Befehlsausführung
+	* Wird in allen heute gängigen CPUs gemacht
+	* Es gibt drei Arten von Superskalarität
+		* Statisches Scheduling
+
+TODO
+		
+		* Dynamisches Scheduling
+
+CPU bestimmt welche Befehle parallel ausgeführt werden und in welcher Reihenfolge (Out of Order Execution)
+
+		* VLIW-Prozessoren
+
+(Siehe nächsten Punkt)
+
+* Very long instruction words (VLIW)
+	* Compiler sucht parallel ausführbare Bereiche
+	* Benutzung längerer Befehle, in denen parallel auszuführende Befehle vorgegeben sind
+
+
+
+## Cache
+
+* Kleiner, schneller Zwischenspeicher
+* Reduziert von-Neumann-Flaschenhals (Daten- und Befehlsbus sind Engpass zwischen Prozessor und Speicher)
+* Cache-Controller (CC) ist für Steuerung zuständig -> Prozessor kann während Warten auf Cache andere Operationen ausführen
+* Cache enthält Kopie von Teilen vom Hauptspeicher
+* Wenn der Prozessor Daten anfordert prüft CC ob Daten im Cache sind
+	* Wenn ja (Cache Hit) werden Daten vom CC geladen und dem Prozessor zur Verfügung gestellt
+	* Wenn nein (Cache Miss) lädt CC Daten aus RAM
+		* Es wird nicht nur ein Wert sondern ein ganzer Block geladen
+
+### Cache Effizienz
+
+* Hängt maßgeblich von Cache-Miss-Rate ab
+* Misses sind viel langsamer als Hits
+* "Lokalität"
+	* räumlich -> Benötigte Daten liegen im Speicher nah beieinander
+	* zeitlich -> Es wird mehrfach auf die selbe Speicherstelle zugegriffen
+
+Wenn Misses teuer sind, warum wird dann nicht einfach der Cache größer gemacht?
+	* Zugriffszeit steigt, da Adressierung komplexer wird
+	* Chipfläche ist begrenzt
+
+### Cache Assoziativität
+
+* Direkt abgebildeter Cache
+
+Jeder Speicherblock kann in genau einem Blockrahmen abgelegt werden
+
+* Mengen-assoziativer Cache
+
+Jeder Speicherblock kann in einer festgelegten Anzahl von Blockrahmen abgelegt werden
+
+* Voll-assoziativer Cache
+
+Jeder Speicherblock kann in einem beliebigen Blockrahmen abgelegt werden
+
+Ersetzungsmethoden für Mengen- und Vollass Caches
+* LRU -> Das älteste fliegt
+* LFU -> Das am wenigsten benutzte fliegt
+
+### Cache Rückschreibestrategien
+
+#### Write through
+
+* Einträge in Cache und RAM weden geändert
+* Alle Prozessoren sehen sofort den aktuellen Wert
+* Schreiben dauert lange, da in RAM geschrieben werden muss
+* Direkte IO Operationen auf RAM möglich
+
+#### Write back
+
+* Eintrag wird "erstmal" nur im Cache geändert
+* Cache und RAM laufen auseinander -> Cache ist aktueller
+* Dirty-Bit zeigt an, ob Speicherblock modifiziert wurde
+
+
+
+### Cache Kohärenz
+
+[Wikipedia - Cache coherence](http://en.wikipedia.org/wiki/Cache_coherence)
+
+* Stellt sicher, dass Prozessoren mit korrekten Werten arbeiten
+* Cache ist _kohärent_, wenn für jede Speicherzelle gilt, dass jede Leseoperation den letzten geschriebenen Wert zurückliefert
+* 2 Gruppen von Protokollen
+	* Verzeichnis-basiert
+
+Zentrale Liste
+
+	* Snooping-basiert
+
+CC beobachtet Bus/Switch (Medium für gemeinsamen Speicherzugriff)
+
+
+
+## SIMD
 
 
 
