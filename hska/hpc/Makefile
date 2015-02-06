@@ -2,7 +2,7 @@ DOCUMENT=hpc.md
 
 all:
 	pandoc -s -o hpc.html $(DOCUMENT) --mathjax
-	pandoc -s -o hpc.pdf $(DOCUMENT) --listings
+	pandoc -s -o hpc.pdf $(DOCUMENT) --listings --toc --toc-depth=1
 
 loop:
 	while true; do inotifywait -e modify $(DOCUMENT); make; done
