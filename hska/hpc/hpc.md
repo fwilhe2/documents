@@ -370,15 +370,15 @@ Jeder Speicherblock kann in einer festgelegten Anzahl von Blockrahmen abgelegt w
 
 Jeder Speicherblock kann in einem beliebigen Blockrahmen abgelegt werden
 
-Ersetzungsmethoden für Mengen- und Vollass Caches
-* LRU -> Das älteste fliegt
-* LFU -> Das am wenigsten benutzte fliegt
+Ersetzungsmethoden für Mengen- und Vollassoziative Caches
+* LRU *least recently used* -> Das älteste fliegt
+* LFU *least frequently used* -> Das am wenigsten benutzte fliegt
 
 ### Cache Rückschreibestrategien
 
 #### Write through
 
-* Einträge in Cache und RAM weden geändert
+* Einträge in Cache und RAM weden geändert => "Durchschreiben"
 * Alle Prozessoren sehen sofort den aktuellen Wert
 * Schreiben dauert lange, da in RAM geschrieben werden muss
 * Direkte IO Operationen auf RAM möglich
@@ -388,8 +388,6 @@ Ersetzungsmethoden für Mengen- und Vollass Caches
 * Eintrag wird "erstmal" nur im Cache geändert
 * Cache und RAM laufen auseinander -> Cache ist aktueller
 * Dirty-Bit zeigt an, ob Speicherblock modifiziert wurde
-
-
 
 ### Cache Kohärenz
 
@@ -457,13 +455,8 @@ Nur der betrachtete Cache hält eine Kopie des Speicherblocks.
 
 * Bus-Operationen
 	* Gleiche wie MSI
-	* BusUpgr
-
-Prozessor will Schreiboperation auf einem Speicherblock ausführen, der bereits in einem anderen Cache ist.	
-	
-	* FlushOpt (cache-to-cache)
-
-Block wird über Bus von Cache A nach Cache B übertragen. Dieses Feature ist optional und wird nicht für korrektes Arbeiten benötigt.
+	* BusUpgr (Prozessor will Schreiboperation auf einem Speicherblock ausführen, der bereits in einem anderen Cache ist.)
+	* FlushOpt (cache-to-cache) (Block wird über Bus von Cache A nach Cache B übertragen. Dieses Feature ist optional und wird nicht für korrektes Arbeiten benötigt.)
 
 Wie wird entschieden ob von **Invalid** nach **Exclusive** oder **Shared** gewechselt wird? -> Es muss geprüft werden, ob schon jemand eine Kopie besitzt und dies mit Signal auf dem Bus signalisiert werden.
 
@@ -479,21 +472,10 @@ Kopie des Blocks in anderen Caches, aber **Owner** ist verantwortlich, Daten zur
 #### Dragon Writeback Update
 
 * 4 Zustände
-	* (E) Exclusive-clean
-	
-Cache und RAM besitzen Wert.
-
-	* (Sc) Shared-clean
-
-Aktueller Cache und andere Caches (und möglicherweise RAM) besitzen den Wert. Aktueller Cache ist nicht **Owner**.
-
-	* (Sm) Shared-modified
-
-Aktueller Cache und andere Caches (nicht der RAM) besitzen den Wert. Aktueller Cache ist **Owner**.
-
-	* (M) Modified *dirty*
-	
-Nur aktueller Cache besitzt den Wert.
+	* (E) Exclusive-clean (Cache und RAM besitzen Wert.)
+	* (Sc) Shared-clean (Aktueller Cache und andere Caches (und möglicherweise RAM) besitzen den Wert. Aktueller Cache ist nicht **Owner**.)
+	* (Sm) Shared-modified (Aktueller Cache und andere Caches (nicht der RAM) besitzen den Wert. Aktueller Cache ist **Owner**.)
+	* (M) Modified *dirty* (Nur aktueller Cache besitzt den Wert.)
 
 
 ## SIMD
@@ -504,16 +486,102 @@ Nur aktueller Cache besitzt den Wert.
 
 ## Performance Modellierung
 
+### PRAM (Parallel Random Access Machine)
+
+[Wikipedia ](http://de.wikipedia.org/wiki/Parallel_Random_Access_Machine)
+
+### BSP (Bulk Synchronous Parallel)
+
+[Wikipedia](https://en.wikipedia.org/wiki/Bulk_synchronous_parallel)
+
+### LogP (Latency Overhead Gap Processors)
+
 ### Timing Modell von Van de Velde
 
 Buch von van de Velde [Concurrent Scientific Computing](http://www.springer.com/mathematics/analysis/book/978-0-387-94195-0) (Leider nicht über SpringerLink erhältlich)
 
 
+#### Zeit für Datenaustausch
 
+| Variable | Bedeutung |
+| ----- | ----- |
+| $t_{K}$ | Kommunikationszeit | 
+| $t_{S}$ | Initialisierungszeit |
+| $\beta$ | Bandbreite (Kehrwert) |
+| $L$ | Länge der Nachricht |
+
+$t_{K} = t_{S} + \beta * L$
+
+#### Zeit für sequentielle Ausführung
+
+| Variable | Bedeutung |
+| ----- | ----- |
+| $T_{s}$ | Sequentielle Rechenzeit |
+| $o$ | Anzahl (arithm.) Operationen |
+| $N$ | Schleifenlänge |
+| $t_{a}$ | Zeit für eine Operation |
+
+$T_{s} = o * N * t_{a} $
+
+#### Zeit für parallele Ausführung
+
+| Variable | Bedeutung |
+| ----- | ----- |
+| $T_{p}$ | Parallele Rechenzeit |
+| $o$ | Anzahl (arithm.) Operationen |
+| $\hat{N}$ | Ideal: $\frac{N}{p}$ Sonst: Längste Schleife eines Prozessors (P teilen Schleife auf) |
+| $t_{a}$ | Zeit für eine Operation |
+
+$T_{p} = o * \hat{N} * t_{a} $
 
 # 6 Errors
 
+## Fehlerklassen
 
+### Race Condition
+
+* Kann als "zeitkritischer Ablauf" übersetzt werden
+* Ergebnisse eines nebenläufigen Programms sind verändert wegen
+	* Unterschiedlich schneller Bearbeitung
+	* Andere Bearbeitungsreihenfolge
+
+### Deadlock
+
+* Prozesse warten aufeinander
+* Programm "bleibt stehen"
+
+### Dirty Read
+
+* Auch "uncommited Read"
+* Ein Prozess nutzt ein Zwischenergebnis eines andren Prozesses, ohne auf Bestätigung zu warten
+* Es wird mit falschen Daten gearbeitet
+
+### Non-Repeatable Read
+
+* Zwei mal gleiche Anfrage lesen gibt zwei unterschiedliche Ergebnisse
+* Beispiel online Ticket kauf: Tickets anzeigen (n verfügbar), lange nachdenken, tickets werden ausverkauft, Tickets anzeigen (0 verfügbar)
+
+### Lost Update
+
+* Zwei Prozesse schreiben gleiche Stelle: Wert von P1 geht verloren, P2 gewinnt
+
+## Werkzeugkasten
+
+### Kritischer Bereich
+
+### Atomare Operation
+
+### Sperrmechanismen
+
+* Semaphor
+
+* Mutex
+
+### Monitor
+
+### Barriere
+
+### Message Passing
 
 # 7 Networks
 
