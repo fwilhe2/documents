@@ -1,8 +1,7 @@
-Zusammenfassung _I W909 High Performance Computing_
-
-Wintersemester 2014/2015
-
-Florian Wilhelm
+---
+title: Zusammenfassung _I W909 High Performance Computing_ Wintersemester 2014/2015
+author: Florian Wilhelm
+---
 
 Markdown Quelle: https://github.com/sputnik27/documents/tree/master/hska/hpc
 
@@ -592,3 +591,42 @@ $T_{p} = o * \hat{N} * t_{a} $
 
 
 # 9 Patterns
+
+
+### Master-Worker
+
+Master verteilt Arbeit an Worker, sammelt Ergebnisse ein, persistiert Daten
+
+### Pipeline
+
+|input| -> |cpu| -> |cpu| -> |cpu| -> |cpu| -> |output|
+
+### MapReduce / Replicable
+
+In Verwendung bei Google, Facebook, ..
+
+#### Map Schritt
+
+#### Reduce Schritt
+
+### Job Pool / Task Queue / Repository
+
+### Thread Pool
+
+## Designziele
+
+### Effizienz
+
+* Resources gut nutzen
+* Overhead kennen
+
+### Einfachheit
+
+* Debug, Verifizierung und Wartung wird einfacher
+
+### Portabilität
+
+* Läuft auf shared und distributed memory
+
+### Skalierbarkeit
+
