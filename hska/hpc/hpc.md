@@ -582,11 +582,49 @@ $T_{p} = o * \hat{N} * t_{a} $
 
 # 7 Networks
 
+## Metriken
+
+### Durchmesser
+
+Der längste kürzeste Pfad.
+
+Typische Anforderung: Kleiner Wert (Kurze Distanzen)
+
+### Grad
+
+Die meißten Kanten an einem Knoten.
+
+Typische Anforderung: Kleiner Wert (Wenig Hardware benötigt => günstig)
+
+### Bisektionsbandbreite
+
+Die kleinste Anzahl Kanten die gekappt werden muss um zwei (annähernd) gleich große Netze zu erstellen.
+
+Typische Anforderung: Großer Wert (Hohe Bandbreite)
+
+### Konnektivität
+
+Die kleinste Anzahl Kanten die gekappt werden muss um das Netz in zwei Teile zu zerlegen.
+
+Typische Anforderung: Großer Wert (Hohe Zuverlässigkeit)
 
 
 # 8 GPU / OpenCl
 
+## Begriffe
 
+### Datenparallelität
+
+Jeder Pixel kann unabhängig von seinen Nachbarn berechnet werden -> Keine Abhängigkeiten
+
+### OpenCl-Device
+
+Ein Prozessor, der datenparallele Programme ausführt.
+
+### Kernel
+
+Eine datenparallele Funktion, die auf einem Device ausgeführt wird.
+ 
 
 # 9 Patterns
 
