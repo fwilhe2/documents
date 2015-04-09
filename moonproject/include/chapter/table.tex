@@ -1,16 +1,18 @@
 \chapter{tables}
 
+\NewDocumentCommand\insertTableTwoColumns{mmm}{
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline
+      #2 & #3 \\
+      \hline
+      \hline
+      true & false \\ \hline % todo make values variable
+      true & true \\ \hline
+    \end{tabular}
+    \caption{\label{system_state_table}#1}
+  \end{table}
+}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-a & b \\
-\hline
-\hline
-true & false \\ \hline
-true & true \\ \hline
-\end{tabular}
-\caption{\label{system_state_table}Decision table for the system state.}
-\end{table}
-
+\insertTableTwoColumns{This table shows\ldots}{foo}{bar}
