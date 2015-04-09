@@ -13,7 +13,7 @@ sudo apt-get install build-essential
 ## Install LaTeX
 
 ```
-sudo apt-get install texlive-full
+sudo apt-get install texlive-full texlive-latex-extra
 ```
 
 ## Install inotify-tools 
