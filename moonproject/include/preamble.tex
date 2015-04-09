@@ -27,13 +27,15 @@ listof=totoc,index=totoc,bibliography=totoc
 \usepackage{xcolor}
 
 \definecolor{color-green-comment}{HTML}{146414}
+\definecolor{color-green-string}{HTML}{326b29}
+\definecolor{color-blue-keyword}{HTML}{47357d}
 \lstset{
         breaklines=true,
         basicstyle=\small\fontfamily{lmtt}\selectfont,
         captionpos=b,
-        stringstyle=\color{blue},
+        stringstyle=\color{color-green-string},
         numberstyle=\tiny\color{gray},
-        keywordstyle=\color{blue},
+        keywordstyle=\color{color-blue-keyword},
         commentstyle=\color{color-green-comment}
 }
 
