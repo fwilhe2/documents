@@ -8,6 +8,13 @@ all:
 	pdflatex $(DOCUMENT).tex -interaction=nonstopmode -halt-on-error
 	pdflatex $(DOCUMENT).tex -interaction=nonstopmode -halt-on-error
 
+lua:
+	lualatex $(DOCUMENT).tex -interaction=nonstopmode -halt-on-error
+	bibtex $(DOCUMENT)
+	lualatex $(DOCUMENT).tex -interaction=nonstopmode -halt-on-error
+	lualatex $(DOCUMENT).tex -interaction=nonstopmode -halt-on-error
+	lualatex $(DOCUMENT).tex -interaction=nonstopmode -halt-on-error
+
 loop:
 	while true; do inotifywait -e modify include/*.tex -e modify *.tex -e modify *.bib; make; done
 
