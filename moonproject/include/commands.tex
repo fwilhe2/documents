@@ -17,6 +17,11 @@
 
 \NewDocumentCommand\todo{m}{\textbf{TODO: #1}}
 
+\NewDocumentCommand\insertBibliography{}{
+  \bibliographystyle{ieeetr}
+  \bibliography{moonproject}
+}
+
 % Commands for logical markup of terms. Make all code, database tables etc look the same.
 \NewDocumentCommand\relation{m}{\textsf{#1}}
 \NewDocumentCommand\column{m}{\textsf{#1}}

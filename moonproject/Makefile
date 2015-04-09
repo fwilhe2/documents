@@ -52,6 +52,8 @@ clean:
 	-@rm *.lot 2> /dev/null|| true
 	-@rm include/*.aux 2> /dev/null|| true
 	-@rm include/*~ 2> /dev/null|| true
+	-@rm include/chapter/*.aux 2> /dev/null|| true
+	-@rm include/chapter/*~ 2> /dev/null|| true
 
 run:
 	xdg-open $(DOCUMENT).pdf

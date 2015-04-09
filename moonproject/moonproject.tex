@@ -7,45 +7,13 @@
 
 \tableofcontents
 
-\chapter{What?!}
+\include{include/chapter/intro}
+\include{include/chapter/pictures}
+\include{include/chapter/java-code}
+\include{include/chapter/empty}
+\include{include/chapter/semantic}
+\include{include/chapter/bibtex}
 
-This is a playground for the perfect\texttrademark{} \LaTeX{} document
-
-\chapter{Pics or did not happen!}
-
-As figure \ref{pic:foo.png} shows, one must not remember so much stuff to make pictures!
-
-\insertPicture{foo.png}{bar}
-
-\insertPicture{Earthrise.jpg}{I. Love. This. Picture. (\cite{earthrise})}
-
-\chapter{You got code? Share it maybe?}
-
-Inline code: \code{doSomeSuperMagic(unicorn, 42)}
-
-As we can see in listing \ref{Main.java}, making listings can be easy, too.
-
-\insertListing{Main.java}{blah}
-
-\chapter{Insert empty page}
-
-Say for some reason, you need a intentionally blank page. What do you do? Easy:
-
-\insertEmptyPage
-
-\chapter{Semantic markup ftw!}
-
-Don't specify how things should look, specify what they are, then you can change the look in a single location!
-
-\relation{bobby}
-
-\column{tables}
-
-\chapter{Just a little bibtex test}
-
-\blindtext~\cite{SomeRef}
-
-\bibliographystyle{ieeetr}
-\bibliography{moonproject}
+\insertBibliography
 
 \end{document}
