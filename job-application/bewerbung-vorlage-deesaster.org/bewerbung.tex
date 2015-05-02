@@ -1,0 +1,232 @@
+% Copyright 2009-2011,2015 Dominik Wagenfuehr <dominik.wagenfuehr@deesaster.org>
+% Dieses Dokument unterliegt der Creative-Commons-Lizenz
+% "Namensnennung-Weitergabe unter gleichen Bedingungen 4.0 International"
+% [http://creativecommons.org/licenses/by-sa/4.0/deed.de].
+%
+% Beispiel-Bewerberfoto: Copyright 2013 TVJunkie
+% https://commons.wikimedia.org/wiki/File:Gnome-Wikipedia-user-female.png
+% Lizenz: Creative-Commons-Lizenz "Attribution-Share Alike 3.0 Unported"
+% [https://creativecommons.org/licenses/by-sa/3.0/deed.en]
+
+\documentclass[12pt,parskip=half-]{scrartcl}
+
+% Liest die vordefinierten Befehle ein. Nicht veraendern!
+\input{befehle.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ab hier sollte man selbst Änderungen vornehmen.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Eigene Daten festgelegt.
+\VollerName{Eva Mustermann}
+\AbsenderStrasse{Musterstraße 42}
+\AbsenderPLZOrt{12345 Berlin}
+\Telefon{Tel.: 01234 -- 567890}
+\EMail{eva.mustermann@musterstadt.de}
+\OrtDatum{Berlin, \HeutigerTag}
+\Geburtstag{1. Januar 1985}
+\Geburtsort{Berlin}
+\Details{ledig, ortsungebunden} % verheiratet, 2 Kinder, etc.
+\Ausbildungsgrad{Promovierte Veterinärmedizinerin}
+
+% Die Unterschrift sollte als Bilddatei vorliegen.
+% Leer lassen oder auskommentieren, wenn keine Signatur eingebunden
+% werden soll.
+\UnterschriftenDatei{signatur-bewerber.png}
+
+% Das Bewerberfoto.
+% Leer lassen oder auskommentieren, wenn keine Foto auf
+% der "Meine Seite"-Seite angezeigt werden soll.
+\BewerberFoto{foto-bewerber.jpg}
+
+% Adressat festlegen
+% Die Abteilung und der Vorname sind optional und können leer
+% gelassen oder auskommentiert werden.
+% Wenn der Nachname leergelassen oder auskommentiert wird,
+% wird die Anrede automatisch durch "Damen und Herren" ersetzt.
+\Firma{Hell AG}
+\Abteilung{Personalabteilung}          % optional
+\AdressatVorname{Ludwig-Christofer}    % optional
+\AdressatNachname{Funkel}              % semi-optional
+\AnschriftStrasse{Route 66}
+\AnschriftPLZOrt{00000 Havenfürst}
+\Anrede{Herr}                          % alternativ: Frau oder leer lassen
+
+% Die Stelle, auf die man sich bewirbt
+\Bewerberstelle{Veterinär-Mediziner (m/w)}
+
+% Beginn des Dokuments, nicht aendern!
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Das Anschreiben
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Abstand zwischen dem Absender und dem Adressat im Anschreiben.
+% Gemessen wird in Zeilen, d.h. der Wert 1.5 steht für anderthalb Zeilen.
+% Der Standard-Wert ist 0.
+\AbstandZwischenAdressen{0}
+
+% Abstand vor dem eigentlichen Anschreiben (inkl. Ort und Datum).
+% Gemessen wird in Zeilen, d.h. der Wert 1.5 steht für anderthalb Zeilen.
+% Der Standard-Wert ist 1.
+\AbstandVorAnschreiben{3}
+
+% Anschreibenseite vergroessern, d.h. es ist damit moeglich, ueber den
+% eigentlichen unteren Rand zu schreiben, falls das Anschreiben etwas
+% laenger geworden ist.
+% Gemessen wird in Zeilen, d.h. der Wert 1.5 steht für anderthalb Zeilen.
+% Der Standard-Wert ist 0. Als Maximalwert sollte man 3 einstellen, ansonsten
+% wirkt das Anschreiben vom Aufbau sehr unausgeglichen.
+\AnschreibenSeiteVergroessern{0}
+
+% Hinweis auf Anlagen
+% Wenn nicht benoetigt, dann einfach auskommentieren.
+\AnschreibenAnlage{Anlagen}
+
+\begin{Anschreiben}
+    % Hinweis Anfang – nach dem Lesen löschen!
+    hier steht nun der Bewerbungstext. Nicht zu lang, aber mit den
+    wichtigen Details, wieso man sich bewirbt und in der Firma
+    anfangen will.
+    
+    Den Hinweis hier natürlich löschen! Das heißt, alles, was in
+    den geschweiften Klammern steht, kann weg.
+    % Hinweis Ende – nach dem Lesen löschen!
+\end{Anschreiben}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Meine Seite
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\MeineSeite
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lebenslauf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{Lebenslauf}
+
+% Der Lebenslauf ist in Abschnitte unterteilt. Jeder Abschnitt hat dabei
+% einen Titel und innerhalb von "begin" und "end" zwei Eintraege, getrennt
+% durch ein "&" und abgeschlossen durch "\\".
+% In der Textgestaltung ist man dabei ansonsten frei.
+
+\begin{AbschnittCV}{Promotion}%
+Mai 2015 & Doktor der Veterinärmedizin Dr.\,med. \\
+         & Doktorarbeit an der Freien Universität Berlin: \\
+         & "`\textit{Habitatsverhalten von Meerschweinchen unter Einfluss von Halluzinogenen}"' \\
+\end{AbschnittCV}
+
+\begin{AbschnittCV}{Studium}%
+September 2012 & Abschluss als Diplom-Veterinärmedizinerin (Bewertung "`sehr gut"') \\
+               & Diplomarbeit an der Freien Universität Berlin: \\
+               & "`\textit{Motorische Analyse der Klapperschlange -- Bewegung und Fortpflanzung}"'\\
+\\
+2006 -- 2012  & Studium Diplom-Veterinärmedizin\\
+              & an der Freien Universität Berlin \\
+              & Schwerpunkte: Säugende Reptilien \\
+\end{AbschnittCV}
+
+\begin{AbschnittCV}{Freiwilliges Soziales Jahr}%
+2005 -- 2006 & Malteser-Krankenhaus Berlin \\
+\end{AbschnittCV}
+
+\begin{AbschnittCV}{Schulbildung}%
+Juni 2005    & Abiturprüfung bestanden mit Note 1,3 \\
+1998 -- 2005 & Gymnasium Pestalozzischule Berlin \\
+\end{AbschnittCV}
+
+% Wenn man will, kann man hier (oder irgendwo anders) den Lebenslauf
+% explizit unterbrechen.
+%\clearpage
+%\section{Lebenslauf}
+
+\begin{AbschnittCV}{Veröffentlichungen}%
+2010 & "`\textit{Cutting Glasses with the Teeth of Crotalus adamanteus}"' für "`Ninth International Conference of World Wide Veterinary Medicine"' in Barcelona (Spanien), Januar 2011 \\
+\end{AbschnittCV}
+
+\begin{AbschnittCV}{Praktische Tätigkeiten}%
+2003 -- 2004 und & Tierarzt-Praxis Dr. Hauser in Berlin \\
+2006 -- 2012     &  \\
+
+% Unterabschnitte koennen eine feinere Gliederung bestimmter Taetigkeiten bieten
+\UnterabschnittCV{Kernarbeitsgebiete}{%
+    \punkt Hunden die Pfötchen halten
+    \punkt Katzen kraulen
+}
+
+\UnterabschnittCV{Weitere Aufgaben}{%
+    \punkt Wasser besorgen
+}
+\end{AbschnittCV}
+
+\begin{AbschnittCV}{Besondere Kenntnisse}%
+\textbf{Sprachen} & Englisch: sehr gut in Schrift und gut in Sprache \\
+                  & Französisch: Grundkenntnisse \\
+                  & Latein: Abschluss mit Latinum \\
+\\
+\textbf{Medizin}  & Allgemeine Veterinärmedizin \\
+                  & Reptilien \\
+\end{AbschnittCV}
+
+\begin{AbschnittCV}{Hobbys und Interessen}%
+                  & Literatur \\
+                  & Badminton \\
+\end{AbschnittCV}
+
+\end{Lebenslauf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Motivation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Text für die Motivationsseite
+\begin{Motivation}
+    % Hinweis Anfang – nach dem Lesen löschen!
+    Hier steht nun der Motivationstext. Man sollte ein bisschen mehr
+    über sich erzählen und wieso man in der Firma anfangen will.
+    
+    Dabei kann man etwas weiter ausholen, frühere Tätigkeiten
+    beschreiben, aber auch auf private nützliche Dinge eingehen,
+    die bei der Arbeit helfen können.
+    
+    In dem Beispiel hier zum Beispiel die Erfahrungen der
+    Tierartzpraxis und die eigenen Haustiere.
+    
+    Den Hinweis hier natürlich löschen! Das heißt, alles, was in
+    den geschweiften Klammern steht, kann weg.        
+    % Hinweis Ende – nach dem Lesen löschen!
+\end{Motivation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Anlagen
+% Wenn man keine Anlagen hat, dann alles
+% auskommentieren oder löschen.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{Anlagenverzeichnis}
+    \AbschnittAnlage{Arbeitszeugnisse}
+    \begin{Auflistung}
+        \punkt Tierarzt-Praxis Dr. Hauser
+        \punkt FSJ, Malteser-Krankenhaus Berlin
+    \end{Auflistung}
+
+    \AbschnittAnlage{Zeugnisse}
+    \begin{Auflistung}
+        \punkt Doktorurkunde
+        \punkt Diplomurkunde
+        \punkt Diplomzeugnis
+        \punkt Abiturzeugnis
+    \end{Auflistung}
+\end{Anlagenverzeichnis}
+
+% Hier folgen nun die einzelnen Anlagen, die als PDF vorliegen.
+% Man kann diese direkt in das Dokument einbinden oder versendet
+% sie separat.
+% \AnlageEinfuegen{zeugnis.pdf}
+% \AnlageEinfuegen{doktorurkunde.pdf}
+
+% Ende des Dokuments, nicht aendern!
+\end{document}

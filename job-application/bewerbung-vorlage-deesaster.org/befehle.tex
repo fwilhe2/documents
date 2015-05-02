@@ -1,0 +1,366 @@
+% Copyright 2009-2011,2015 Dominik Wagenfuehr <dominik.wagenfuehr@deesaster.org>
+% Dieses Dokument unterliegt der Creative-Commons-Lizenz
+% "Namensnennung-Weitergabe unter gleichen Bedingungen 4.0 International"
+% [http://creativecommons.org/licenses/by-sa/4.0/deed.de].
+
+% Pakete
+\usepackage[utf8]{inputenc}   % UTF8-Kodierung für Umlaute
+\usepackage[T1]{fontenc}      % use TeX encoding then Type 1.
+\usepackage{ngerman}          % deutsche Silbentrennung
+\usepackage{graphicx}         % Einbindung von Grafiken
+\usepackage{fancyhdr}         % eigenes Layout einbinden
+\usepackage{pdfpages}         % PDF-Seiten einbinden
+\usepackage{xifthen}          % Wenn-dann-Abfragen
+\usepackage{charter}          % Charter-Schrift
+\usepackage{titlesec}         % Anpassung der Überschriften
+\usepackage{longtable}        % Tabellen über Seitenumbruch hinweg
+\usepackage{setspace}         % Zeilenabstand festlegen
+\usepackage{hyperref}         % Hyperlinks und interne PDF-Verweise
+
+% Layout
+\hbadness=10000                % unterdrückt unwichtige Fehlermeldungen
+\clubpenalty = 10000           % Keine "Schusterjungen"
+\widowpenalty = 10000          % Keine "Hurenkinder"
+\displaywidowpenalty = 10000
+
+% Linie im Kopf ausblenden und im Fuß eine feine Linie
+\renewcommand*{\headrulewidth}{0pt}
+\renewcommand*{\footrulewidth}{0.4pt}
+
+% Überschriftenlayout verändern
+\titlespacing{\section}{0mm}{2em}{2em}
+\titlespacing{\subsection}{0em}{0em}{0em}
+\titleformat{\section}{\normalfont\LARGE\scshape}{}{0mm}{\hspace*{\fill}}
+\titleformat{\subsection}{\normalfont\Large\bfseries\scshape}{}{0mm}{}[\vskip-1.5em\hrulefill]
+
+% Eigene Fusszeile festlegen, Kopfzeile leeren
+\pagestyle{fancy}
+\fancyhead{}
+\cfoot{\DefVollerName, \DefAbsenderStrasse, \DefAbsenderPLZOrt, \DefTelefon}
+
+% Definition des heutigen Datums
+\newcommand*{\HeutigerTag}{\today}
+
+% Definitionen zur eigenen Person
+\newcommand*{\DefVollerName}{}
+\newcommand*{\DefAbsenderStrasse}{}
+\newcommand*{\DefAbsenderPLZOrt}{}
+\newcommand*{\DefTelefon}{}
+\newcommand*{\DefEMail}{}
+\newcommand*{\DefOrtDatum}{}
+\newcommand*{\DefGeburtstag}{}
+\newcommand*{\DefGeburtsort}{}
+\newcommand*{\DefDetails}{}
+\newcommand*{\DefAusbildungsgrad}{}
+\newcommand*{\DefUnterschriftenDatei}{}
+\newcommand*{\DefBewerberFoto}{}
+
+% Definition zum Ueberschreiben der Daten zur eigenen Person
+\newcommand*{\VollerName}[1]{\renewcommand*{\DefVollerName}{#1}}
+\newcommand*{\AbsenderStrasse}[1]{\renewcommand*{\DefAbsenderStrasse}{#1}}
+\newcommand*{\AbsenderPLZOrt}[1]{\renewcommand*{\DefAbsenderPLZOrt}{#1}}
+\newcommand*{\Telefon}[1]{\renewcommand*{\DefTelefon}{#1}}
+\newcommand*{\EMail}[1]{\renewcommand*{\DefEMail}{#1}}
+\newcommand*{\OrtDatum}[1]{\renewcommand*{\DefOrtDatum}{#1}}
+\newcommand*{\Geburtstag}[1]{\renewcommand*{\DefGeburtstag}{#1}}
+\newcommand*{\Geburtsort}[1]{\renewcommand*{\DefGeburtsort}{#1}}
+\newcommand*{\Details}[1]{\renewcommand*{\DefDetails}{#1}}
+\newcommand*{\Ausbildungsgrad}[1]{\renewcommand*{\DefAusbildungsgrad}{#1}}
+\newcommand*{\UnterschriftenDatei}[1]{\renewcommand*{\DefUnterschriftenDatei}{#1}}
+\newcommand*{\BewerberFoto}[1]{\renewcommand*{\DefBewerberFoto}{#1}}
+
+% Absender
+\newcommand{\Absender}[1][\normalsize]{%
+    \rightline{\textbf{#1\DefVollerName}}
+    \rightline{\DefAbsenderStrasse}
+    \rightline{\DefAbsenderPLZOrt}
+    \rightline{\DefTelefon}
+    \rightline{\DefEMail}
+}
+
+% Definitionen zum Empfaenger
+\newcommand*{\DefFirma}{}
+\newcommand*{\DefAbteilung}{}
+\newcommand*{\DefAdressatVorname}{}
+\newcommand*{\DefAdressatNachname}{}
+\newcommand*{\DefAnschriftStrasse}{}
+\newcommand*{\DefAnschriftPLZOrt}{}
+\newcommand*{\DefAnredeKopf}{}
+\newcommand*{\DefAnredeText}{ Damen und Herren}
+
+% Definitionen zum Ueberschreiben der Daten des Empfaengers
+\newcommand*{\Firma}[1]{\renewcommand*{\DefFirma}{#1}}
+\newcommand*{\Abteilung}[1]{\renewcommand*{\DefAbteilung}{#1}}
+\newcommand*{\AdressatVorname}[1]{\renewcommand*{\DefAdressatVorname}{#1}}
+\newcommand*{\AdressatNachname}[1]{\renewcommand*{\DefAdressatNachname}{#1}}
+\newcommand*{\AnschriftStrasse}[1]{\renewcommand*{\DefAnschriftStrasse}{#1}}
+\newcommand*{\AnschriftPLZOrt}[1]{\renewcommand*{\DefAnschriftPLZOrt}{#1}}
+\newcommand*{\Anrede}[1]{%
+    \ifthenelse{\equal{\DefAdressatNachname}{}}{%
+        \renewcommand*{\DefAnredeKopf}{}%
+        \renewcommand*{\DefAnredeText}{ Damen und Herren}%
+    }{%
+        \ifthenelse{\equal{#1}{Herr}}{%
+            \renewcommand*{\DefAnredeKopf}{Herrn}%
+            \renewcommand*{\DefAnredeText}{r Herr}%
+        }{%
+            \ifthenelse{\equal{#1}{Frau}}{%
+                \renewcommand*{\DefAnredeKopf}{Frau}%
+                \renewcommand*{\DefAnredeText}{ Frau}%
+            }{}%
+        }%
+    }%
+}
+
+%\errmessage{Unbekannte Anrede! Sollte 'Frau' oder 'Herr' sein}
+
+% Adressat
+\newcommand{\Anschrift}{%
+    \textbf{\DefFirma}\\
+    \ifthenelse{\equal{\DefAnredeKopf}{}}{}{%
+        \DefAnredeKopf{}
+        \ifthenelse{\equal{\DefAdressatVorname}{}}{}{%
+            \DefAdressatVorname{}
+        }%
+        \ifthenelse{\equal{\DefAdressatNachname}{}}{}{%
+            \DefAdressatNachname{} \\
+        }%
+    }%
+    \ifthenelse{\equal{\DefAbteilung}{}}{}{%
+        \DefAbteilung\\
+    }%
+    \DefAnschriftStrasse\\
+    \DefAnschriftPLZOrt\\
+}
+
+% Makro für Ort und Unterschrift
+\newcommand*{\UnterschriftOrt}{%
+    \Unterschrift~\\
+    \DefOrtDatum\\
+}
+
+% Unterschrift als Bilddatei einfügen
+\newcommand*{\Unterschrift}{%
+    \ifthenelse{\equal{\DefUnterschriftenDatei}{}}{%
+        \vspace{2\baselineskip}%
+    }{%
+        \includegraphics{\DefUnterschriftenDatei}%
+    }
+}
+
+% Lebenslauf
+\newenvironment{Lebenslauf}
+{%
+    \section{Lebenslauf}
+}{%
+    \UnterschriftOrt
+    \clearpage
+}
+
+% Tabelle für Lebenslauf
+\newlength{\AbstandAbschnitt}
+\newboolean{UnterabschnittBegonnen}
+\newenvironment{AbschnittCV}[2][0\baselineskip]
+{%
+    \subsection{#2}%
+
+    \setlength{\AbstandAbschnitt}{#1}%
+    \begin{longtable}{p{0.3\linewidth}p{0.64\linewidth}}%
+    \setboolean{UnterabschnittBegonnen}{false}%
+}{%
+    \end{longtable}%
+    \vspace{\AbstandAbschnitt}%
+}
+
+% Unterabschnitt in Lebenslauftabelle mit sonstigen Themen
+% Achtung, keine Umgebung, sondern ein Kommando!
+\newlength{\AbstandUnterabschnitt}
+\newcommand{\UnterabschnittCV}[3][0\baselineskip]
+{%
+    \end{longtable}%
+    \ifthenelse{\boolean{UnterabschnittBegonnen}}{%
+        \setlength{\AbstandUnterabschnitt}{-3.5\baselineskip}%
+    }{%
+        \setlength{\AbstandUnterabschnitt}{-1.5\baselineskip}%
+    }%
+    \addtolength{\AbstandUnterabschnitt}{#1}%
+    \vspace{\AbstandUnterabschnitt}%
+    \textit{#2}:
+    \begin{itemize}
+    #3
+    \end{itemize}
+    \setboolean{UnterabschnittBegonnen}{true}%
+    \begin{longtable}{p{0.3\linewidth}p{0.64\linewidth}}%
+    \\
+}
+
+% Anrede im Brief
+\newcommand*{\DefAnrede}{%
+    Sehr geehrte\DefAnredeText{}%
+    \ifthenelse{\equal{\DefAdressatNachname}{}}{}{
+        \DefAdressatNachname{}%
+    }%
+    ,%
+}
+
+% Die Grußformel am Anschreibenende
+\newcommand{\Grussworte}{%
+Über die Einladung zu einem persönlichen Gespräch freue ich mich und verbleibe
+
+mit freundlichen Grüßen
+
+\Unterschrift~\\[\baselineskip]
+}
+
+% Definition der Bewerberstelle
+\newcommand*{\DefBewerberstelle}{}
+
+% Definitionen zum Ueberschreiben der Bewerberstelle
+\newcommand*{\Bewerberstelle}[1]{\renewcommand*{\DefBewerberstelle}{#1}}
+
+% Betreff
+\newcommand*{\Betreff}{\textbf{Bewerbung als \DefBewerberstelle}}
+
+% Etwa Abstand vor dem Ort, um die Seite besser aufteilen zu können.
+\newlength{\LenAbstandVorAnschreiben}
+\setlength{\LenAbstandVorAnschreiben}{\baselineskip}
+\newcommand*{\AbstandVorAnschreiben}[1]{\setlength{\LenAbstandVorAnschreiben}{#1\baselineskip}}
+
+% Abstand zwischen den Adressen im Anschreiben.
+\newlength{\LenAbstandZwischenAdressen}
+\setlength{\LenAbstandZwischenAdressen}{0\baselineskip}
+\newcommand*{\AbstandZwischenAdressen}[1]{\setlength{\LenAbstandZwischenAdressen}{#1\baselineskip}}
+
+% Die Anschreibeseite wird bei Bedarf etwas vergrößert, da es hier keine
+% Fußzeile gibt.
+\newlength{\LenSeiteVergroessern}
+\setlength{\LenSeiteVergroessern}{0\baselineskip}
+\newcommand*{\AnschreibenSeiteVergroessern}[1]{\setlength{\LenSeiteVergroessern}{#1\baselineskip}}
+
+\newcommand{\AnschreibenKopf}
+{%
+    % Anschreiben ohne Fuss- oder Kopfzeile
+    \thispagestyle{empty}
+
+    % Seite ggf. etwas vergroessern
+    \enlargethispage{\LenSeiteVergroessern}
+    
+    \begin{spacing}{1.05}
+        % Meine Anschrift
+        \Absender
+
+        % ggf. will man etwas Abstand zwischen den Adressen.
+        \vspace*{\LenAbstandZwischenAdressen}
+
+        % Anschrift der Firma
+        \Anschrift
+
+        % ggf. braucht man hier etwas Abstand, je nachdem, wie
+        % viel Text man im Anschreiben hat.
+        \vspace*{\LenAbstandVorAnschreiben}
+
+        % Ort und Datum
+        \rightline{\DefOrtDatum}
+    \end{spacing}
+
+}
+
+% Definition des Textes im Anschreiben
+\newcommand{\DefAnschreibenAnlage}{}
+
+% Definition zum Setzen des Textes im Anschreiben
+\newcommand{\AnschreibenAnlage}[1]{\renewcommand{\DefAnschreibenAnlage}{#1}}
+
+\newenvironment{Anschreiben}
+{%
+    % Titel und Autor des PDFs werden automatisch festgelegt,
+    % was aber erst nach der Definition des Namens geht.
+    \hypersetup{%
+        pdftitle={Bewerbung bei \DefFirma},
+        pdfauthor={\DefVollerName},
+        pdfcreator={\DefVollerName}
+    }
+
+    \AnschreibenKopf
+    \begin{spacing}{1.15}
+        \Betreff
+        \begin{flushleft}
+            \DefAnrede
+
+}{%
+
+            \Grussworte
+            
+            \vspace{\baselineskip}
+            \DefAnschreibenAnlage
+        \end{flushleft}
+    \end{spacing}
+    \clearpage
+}
+
+\newcommand{\MeineSeite}
+{%
+    \section{Zu meiner Person}
+
+    \begin{spacing}{1.3}
+        \Absender[\large]
+        \vspace{1.5\baselineskip}
+
+        \rightline{geboren am \DefGeburtstag}
+        \rightline{in \DefGeburtsort}
+        \vspace{0.5\baselineskip}
+
+        \rightline{\DefDetails}
+
+        \rule{10cm}{0.6pt} \\
+        {\large \textbf{Ausbildungsgrad}}\\
+        \DefAusbildungsgrad\\
+
+        \ifthenelse{\equal{\DefBewerberFoto}{}}{}{%
+            \includegraphics[width=5cm]{\DefBewerberFoto}\\
+        }
+
+    \end{spacing}
+}
+
+\newenvironment{Motivation}
+{%
+    \section{Über mich und meine Motivation}
+ 
+    \begin{spacing}{1.3}
+        \begin{flushleft}
+
+}{%
+
+        \end{flushleft}
+    \end{spacing}
+    
+    \UnterschriftOrt
+    \clearpage
+}
+
+% Definition der Abschnitte
+\newcommand*{\AbschnittAnlage}[1]{\subsection{#1}}
+
+% Definition der Auflistung
+\newenvironment{Auflistung}
+{\begin{itemize}}
+{\end{itemize}}
+
+\newcommand{\punkt}{\item}
+
+% Definition des Anlagenverzeichnisses
+\newenvironment{Anlagenverzeichnis}{%
+    \section{Anlagenverzeichnis}
+
+    \begin{spacing}{1.1}
+}{%
+    \end{spacing}
+    \clearpage
+}
+
+% Anlagen einfuegen
+\newcommand*{\AnlageEinfuegen}[1]{\includepdf[pages=-]{#1}}
+
+
+
