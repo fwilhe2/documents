@@ -1,0 +1,54 @@
+= Kotlin
+Florian Wilhelm
+1.0.0-SNAPSHOT
+
+== What is Kotlin?
+
+https://kotlinlang.org/[Kotlin] is a programming language for the JVM, developed by JetBrains.
+It combines traits of the Java lanugage with some of Scala.
+Kotlin does not force any programming paradigm on you.
+It is an object orientet language like Java and C#.
+Functional programming is also a first class citizen, much more so then in Java 8.
+For simple scripting tasks, an imperative aproach is also possible, without the OO boilerplate that Java forces on you.
+Kotlins main target is the jvm, but there is also an (currently) experimental javascript backend available.
+
+== Why use it?
+
+=== Syntax Sugar
+
+* `val` keyword for imutability
+* heavy type inference -> `var` keyword for variables
+* `data` classes
+* First Class Functions
+`fun isEven(x: Int): Double = if (x.mod(2).equals(0)) 1.0 else 0.0`
+
+----
+fun timeSequential(x: Int): Double {
+    return nX.eval(x) * nY.eval(x) * tA.eval(x) * numberOfOperations.eval(x)
+}
+
+val tS: Column = Column("Sequential Time", ::timeSequential)
+----
+
+Hope in the Java 6 wasteland of android
+Null safety
+
+== How to use it?
+
+You can try Kotlin out using the http://try.kotlinlang.org/[web-based editor].
+Of course, you can download a standalone compiler, including the runtime jar.
+IntelliJ IDEA includes a plugin for Kotlin.
+There is also a plugin for Eclipse available, but I never tried it.
+
+== Selected Projects using Kotlin
+
+* https://github.com/cbeust/kobalt[Kobalt], a gradle-like build tool (Build files are nothing but Kotlin programs)
+* https://github.com/fwilhe/Incell[Incell], my toy-spreadsheet application
+* https://github.com/fwilhe/lab[lab], a work-in-progress gitlab auxillary application (like `hub` for github)
+
+== Resources
+
+* http://blog.omalley.id.au/2013/07/27/null-handling-in-kotlin.html
+* https://medium.com/@octskyward/why-kotlin-is-my-next-programming-language-c25c001e26e3
+
+
