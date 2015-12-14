@@ -5,25 +5,60 @@ Florian Wilhelm
 == What is Kotlin?
 
 https://kotlinlang.org/[Kotlin] is a programming language for the JVM, developed by JetBrains.
-It combines traits of the Java lanugage with some of Scala.
+It combines traits of the Java language with some of Scala.
 Kotlin does not force any programming paradigm on you.
-It is an object orientet language like Java and C#.
+It is an object oriented language like Java and C#.
 Functional programming is also a first class citizen, much more so then in Java 8.
-For simple scripting tasks, an imperative aproach is also possible, without the OO boilerplate that Java forces on you.
-Kotlins main target is the jvm, but there is also an (currently) experimental javascript backend available.
+In this respect, it resembles scala in some ways, but constraints itself to a more simple syntax.
+For simple scripting tasks, an imperative approach is also possible, without the OO boilerplate that Java forces on you.
+Kotlin's main target is the jvm, but there is also an (currently) experimental javascript backend available.
+Type inference is a feature that makes coding much more pleasant.
+It is not unique to Kotlin, but it will be a nice thing to see for Java developers.
 
 == Why use it?
 
+=== Selling Points
+
+* Concise
+
+Java is too verbose.
+Kotlin is here to fix that.
+
+* Safe
+
+> Get rid of those pesky NullPointerExceptions, you know, The Billion Dollar Mistake
+
+* Versatile
+
+** Existing Java Enterprise Apps
+** Android
+** JavaScript
+
+* Interoperable
+
+** Use all the Java Libraries that you know and like
+
 === Syntax Sugar
 
-* `val` keyword for imutability
+* `val` keyword for immutability
 * heavy type inference -> `var` keyword for variables
-* `data` classes
-* First Class Functions
-`fun isEven(x: Int): Double = if (x.mod(2).equals(0)) 1.0 else 0.0`
+* no `new` keyword for object creation -> less noise
+* `data` classes -> "structs"
+* String Templates -> `println("Hello, my name is ${name}")`
+* Default Values for Parameters
+* Raw Strings in triple quotes
 
 ----
-fun timeSequential(x: Int): Double {
+val myText = """This is a very
+important
+message.
+"""
+----
+
+* First Class Functions
+
+----
+fun timeSequential(x: Int): Int {
     return nX.eval(x) * nY.eval(x) * tA.eval(x) * numberOfOperations.eval(x)
 }
 
@@ -32,6 +67,11 @@ val tS: Column = Column("Sequential Time", ::timeSequential)
 
 Hope in the Java 6 wasteland of android
 Null safety
+
+=== What does it have to offer for tarent?
+
+* We are a Java shop -> We can use it in existing projects (as opposed to golang)
+* Familiar syntax (kind of)
 
 == How to use it?
 
@@ -48,7 +88,8 @@ There is also a plugin for Eclipse available, but I never tried it.
 
 == Resources
 
+* https://kotlinlang.org/
+* https://kotlinlang.org/docs/kotlin-docs.pdf
 * http://blog.omalley.id.au/2013/07/27/null-handling-in-kotlin.html
 * https://medium.com/@octskyward/why-kotlin-is-my-next-programming-language-c25c001e26e3
-
 
