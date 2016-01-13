@@ -68,6 +68,24 @@ val tS: Column = Column("Sequential Time", ::timeSequential)
 Hope in the Java 6 wasteland of android
 Null safety
 
+=== Kotlin vs. X
+
+==== Kotlin vs. Java
+
+* Less verbose
+* "Built in" Lombok
+* JVM6 Bytecode with Java 8 Programming Model (Lambdas, ..)
+
+==== Kotlin vs. Scala
+
+* Less academic
+* Closer to Java -> Less mental effort for Java Devs
+
+==== Kotlin vs. Groovy
+
+* Type-checks!
+
+
 === What does it have to offer for tarent?
 
 * We are a Java shop -> We can use it in existing projects (as opposed to golang)
