@@ -5,15 +5,17 @@ Florian Wilhelm
 == What is Kotlin?
 
 https://kotlinlang.org/[Kotlin] is a programming language for the JVM, developed by JetBrains.
-It combines traits of the Java language with some of Scala.
+It combines traits of the Java language with some of more modern ones, like Scala and Groovy.
 Kotlin does not force any programming paradigm on you.
 It is an object oriented language like Java and C#.
 Functional programming is also a first class citizen, much more so then in Java 8.
 In this respect, it resembles scala in some ways, but constraints itself to a more simple syntax.
 For simple scripting tasks, an imperative approach is also possible, without the OO boilerplate that Java forces on you.
 Kotlin's main target is the jvm, but there is also an (currently) experimental javascript backend available.
+This enables you, to use one language for the backend and the frontend of you application, if you wish to do so.
 Type inference is a feature that makes coding much more pleasant.
 It is not unique to Kotlin, but it will be a nice thing to see for Java developers.
+I mean, even C++ does have this to some extend
 
 == Why use it?
 
@@ -103,6 +105,7 @@ There is also a plugin for Eclipse available, but I never tried it.
 * https://github.com/cbeust/kobalt[Kobalt], a gradle-like build tool (Build files are nothing but Kotlin programs)
 * https://github.com/fwilhe/Incell[Incell], my toy-spreadsheet application
 * https://github.com/fwilhe/lab[lab], a work-in-progress gitlab auxillary application (like `hub` for github)
+* https://github.com/jankotek/mapdb/tree/mapdb3[MapDB 3]
 
 == Resources
 
