@@ -1,0 +1,28 @@
+
+
+\NewDocumentCommand\insertPicture{mm}{
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{picture/#1}
+    \caption{#2}
+    \label{pic:#1}
+  \end{figure}
+}
+
+\NewDocumentCommand\insertListing{mm}{
+  \lstinputlisting[language=Java,label=#1,caption={#2.}]{listing/#1}
+}
+
+\NewDocumentCommand\insertEmptyPage{}{\input{include/empty}}
+
+\NewDocumentCommand\todo{m}{\textbf{TODO: #1}}
+
+\NewDocumentCommand\insertBibliography{}{
+  \bibliographystyle{ieeetr}
+  \bibliography{moonproject}
+}
+
+% Commands for logical markup of terms. Make all code, database tables etc look the same.
+\NewDocumentCommand\relation{m}{\textsf{#1}}
+\NewDocumentCommand\column{m}{\textsf{#1}}
+\NewDocumentCommand\code{m}{\lstinline$#1$}
