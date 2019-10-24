@@ -11,3 +11,7 @@ jobs:
           sudo apt-get -y update && sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra
           cd templates/latex-thesis
           make all
+      - uses: actions/upload-artifact@master
+        with:
+          name: moonproject
+          path: templates/latex-thesis/moonproject.pdf
