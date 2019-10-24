@@ -8,10 +8,16 @@ jobs:
         uses: actions/checkout@v1
       - name: Compile LaTeX document
         run: |
-          sudo apt-get -y update && sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra
+          sudo apt-get -y update && sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra pandoc gladtex
           cd templates/latex-thesis
+          make all
+          cd ../../hpc
           make all
       - uses: actions/upload-artifact@master
         with:
           name: moonproject
           path: templates/latex-thesis/moonproject.pdf
+      - uses: actions/upload-artifact@master
+        with:
+          name: hpc
+          path: hpc/hpc.pdf
