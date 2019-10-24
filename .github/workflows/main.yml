@@ -8,6 +8,6 @@ jobs:
         uses: actions/checkout@v1
       - name: Compile LaTeX document
         run: |
-          sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra
+          sudo apt-get -y update && sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra
           cd templates/latex-thesis
           make all
