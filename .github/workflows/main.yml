@@ -11,7 +11,7 @@ jobs:
           sudo apt-get -y update && sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra pandoc gladtex
           cd templates/latex-thesis
           make all
-          cd ../../hpc
+          cd ../../hska/hpc
           make all
       - uses: actions/upload-artifact@master
         with:
@@ -20,4 +20,4 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: hpc
-          path: hpc/hpc.pdf
+          path: hska/hpc/hpc.pdf
