@@ -3,12 +3,12 @@ on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    container: docker.pkg.github.com/fwilhe2/latex-docker-image/latex:latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v1
       - name: Compile LaTeX document
         run: |
-          sudo apt-get -y update && sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra pandoc gladtex
           cd templates/latex-thesis
           make all
           cd ../../hska/hpc
