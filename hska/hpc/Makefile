@@ -1,9 +1,9 @@
 DOCUMENT=hpc.md
 
 all:
-	pandoc -s --gladtex $(DOCUMENT) -o hpc.htex
-	gladtex -d formeln hpc.htex
-	rm hpc.htex
+#	pandoc -s --gladtex $(DOCUMENT) -o hpc.htex
+#	gladtex -d formeln hpc.htex
+#	rm hpc.htex
 	pandoc -s -o hpc.pdf $(DOCUMENT) --listings --toc --toc-depth=1
 
 loop:
