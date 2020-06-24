@@ -6,18 +6,18 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v1
-      - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Compile LaTeX document
         run: |
-          docker run -v $PWD:/code docker.pkg.github.com/fwilhe2/latex-docker-image/latex:latest bash -c "cd /code/templates/latex-thesis; make all; cd /code/hska/hpc; make all"
+          sudo apt-get -y update && sudo apt-get -yqq install build-essential texlive-full texlive-latex-extra pandoc gladtex
+          cd templates/latex-thesis
+          make all
+          cd ../../hpc
+          make all
       - uses: actions/upload-artifact@master
         with:
           name: moonproject
           path: templates/latex-thesis/moonproject.pdf
-
       - uses: actions/upload-artifact@master
         with:
           name: hpc
-          path: hska/hpc/hpc.pdf
-
+          path: hpc/hpc.pdf
